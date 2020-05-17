@@ -42,7 +42,7 @@ namespace MessaginApp.API
             }
 
             //app.UseHttpsRedirection();
-            app.UseCors(x=>x.AllowAnyOrigin().AllowAnyMethod().AllowAnyMethod());
+            app.UseCors(x=>x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseRouting();
 
@@ -52,6 +52,7 @@ namespace MessaginApp.API
             {
                 endpoints.MapControllers();
             });
+            app.UseAuthentication();
         }
     }
 }
