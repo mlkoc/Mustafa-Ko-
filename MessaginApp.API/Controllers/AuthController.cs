@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace MessaginApp.API.Controllers
 {
     //talepler yapılırken kimlik doğrulma yapılır
-    [Route("api/controller")]
+    [Route("api/[controller]")]
     [ApiController]
     //validationların kullanılabilmesi için ve dtos la bağlantı kurmak için
     public class AuthController:ControllerBase
