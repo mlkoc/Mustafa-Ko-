@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MessaginApp.API.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace MessaginApp.API.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
+   // [Authorize] //kimlik doğrulama yapılmadıysa aşağıdaki actionları
     public class ValuesController : ControllerBase
     {
         private readonly DataContext _context;
@@ -32,6 +35,7 @@ namespace MessaginApp.API.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
+        [AllowAnonymous] // bu action kimlik doğrulamadan çalışır
         public async Task<IActionResult> Get(int id)
         {
             var value = await _context.Values.FirstOrDefaultAsync(x=>x.Id==id);
